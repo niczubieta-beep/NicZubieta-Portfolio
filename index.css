@@ -25,30 +25,21 @@ html {
     background-color: var(--beige);
 }
 
-#picture_of_nic {
-  display:block;
-
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-
-  border-radius: 30px;
-  border-color: black;
-  border-width: 10px;
-  border-style: solid;
-}
-
 nav {
+
     margin: auto;
     background-color: var(--msu-gown-green);
-    width: 800px;
+    width: 85vw;
     border-radius: 30px;
 }
 
 nav ul {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     padding: 0px;
-    margin: 0px;
+    margin: 0 auto;
     list-style-type: none;
 }
 
@@ -56,7 +47,7 @@ nav ul li{
     display: inline-block;
     margin: 0 45px;
     font-size: 45px;
-    width: 150px;
+    text-align: center;
 } 
 
 nav a {
@@ -68,32 +59,54 @@ nav a:hover {
     color: white;
 }
 
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+
+    border-radius: 30px;
+    border-color: var(--gunmetal);
+    border-width: 10px;
+    border-style: solid;
+
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+}
+
+#picture_of_nic {
+  display:block;
+  grid-column: 2;
+  grid-row: 1;
+
+  margin: 10px auto;
+
+  border-radius: 30px;
+  border-color: black;
+  border-width: 10px;
+  border-style: solid;
+}
+
 h1 {
+    grid-row: 3;
     font-family: "kinesthetia", monospace;
     text-align: center; 
 }
 
-main {
-  border-radius: 30px;
-  border-color: var(--gunmetal);
-  border-width: 10px;
-  border-style: solid;
-
-  margin-top: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-    
-}
-
 #projects h2, #hobbies h2, #about h2 {
     background-color: var(--baby-blue-ice);
-    display: inline-block;
-    margin: 0px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: fit-content;
+
     padding-left: 30px;
     padding-right: 30px;
     border-radius: 30px;
     font-size: 35px;
 }
+
 
 #projects p, #hobbies p, #about p {
     text-indent: 40px;
@@ -104,8 +117,11 @@ main {
 
 h3 {
     background-color: var(--dusty-mauve);
-    display: inline-block;
+    display: block;
     font-size: 25px;
+    width: fit-content;
+    text-align: center;
+    margin: 10px auto;
 }
 
 
@@ -119,6 +135,12 @@ h3 {
     display: block;
     text-align: center;
 }
+
+.projects-list {
+    display : flex;
+    flex-direction: column;
+}
+
 
 #hobbies a:hover {
     font-size: 45px;
@@ -135,10 +157,13 @@ h3 {
 .project-image {
     display: block;
     margin-top: 0;
+    margin: 0 auto;
     width: 250px;
     border-color: black;
-    border-width: 10px;
+    border-width: 0.5rem;
     border-style: solid;
+    width: 10rem;
+    height: 10rem;
 }
 
 .project-image:hover {
@@ -164,4 +189,33 @@ address {
     font-family: "kinesthetia", monospace;
     font-size: 20px;
     font-style: italic;
+}
+
+@media (min-width: 600px) 
+{
+    nav ul{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .projects-list{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    h3 {
+        width: 10vw;
+        margin: 2.5rem 0rem;
+    }
+
+}
+
+@media (min-width: 1000px){}
+
+@media (min-width: 1400px){
+    #projects p, #hobbies p, #about p{
+        font-size: 30px;
+    }
+
+
 }
