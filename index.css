@@ -25,30 +25,21 @@ html {
     background-color: var(--beige);
 }
 
-#picture_of_nic {
-  display:block;
-
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-
-  border-radius: 30px;
-  border-color: black;
-  border-width: 10px;
-  border-style: solid;
-}
-
 nav {
+
     margin: auto;
     background-color: var(--msu-gown-green);
-    width: 800px;
+    width: 85vw;
     border-radius: 30px;
 }
 
 nav ul {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     padding: 0px;
-    margin: 0px;
+    margin: 0 auto;
     list-style-type: none;
 }
 
@@ -56,7 +47,7 @@ nav ul li{
     display: inline-block;
     margin: 0 45px;
     font-size: 45px;
-    width: 150px;
+    text-align: center;
 } 
 
 nav a {
@@ -68,51 +59,100 @@ nav a:hover {
     color: white;
 }
 
+
+/* 
+I used copilot to fix a problem where the hobbies columns wouldn't resize correctly, and it would either overlap or push the other sections off screen. 
+
+Here are the prompts:
+
+The hobbies section gets pressed up against the other columns while resizing is happening. Please change the sections causing this problem to have each column resize to fit the screen as it is resizing. I would like to keep the columns a certain size so that the text does not overflow down to something like one word per line. The content should resize as well if it needs to.
+
+    Updated index.css so the sections form as many columns as can fit with a minimum width, instead of squeezing into three columns at 600px. Project cards now stack within their column, and text, headings, spacing, and images scale to fit.
+
+    git diff --check passed. No test files or package.json were present, so I couldn’t run a test suite. I left the existing index.html changes untouched.
+
+The three columns should take up the entire main box. When the screen is wider than 600px the projects should be side to side. The columns should not overlap but they should also not push each other off screen.
+
+    Updated index.css: below 600px, the sections stack in one column. Above 601px, About, Projects, and Hobbies each occupy an equal-width column across the main box, and the project cards sit side by side. The grid and cards can shrink without pushing each other off screen, and long words only break when necessary.
+*/
+main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1rem, 2vw, 2rem);
+
+    border-radius: 30px;
+    border-color: var(--gunmetal);
+    border-width: 10px;
+    border-style: solid;
+
+    margin-top: 20px;
+    padding: clamp(12px, 2vw, 20px);
+    margin-bottom: 20px;
+
+}
+
+#picture_of_nic {
+  display:block;
+  grid-column: 2;
+  grid-row: 1;
+
+  margin: 10px auto;
+
+  border-radius: 30px;
+  border-color: black;
+  border-width: 10px;
+  border-style: solid;
+}
+
 h1 {
+    grid-row: 1;
+    grid-column: 1 / -1;
     font-family: "kinesthetia", monospace;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     text-align: center; 
 }
 
-main {
-  border-radius: 30px;
-  border-color: var(--gunmetal);
-  border-width: 10px;
-  border-style: solid;
-
-  margin-top: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-    
+#about, #projects, #hobbies {
+    min-width: 0;
+    overflow-wrap: break-word; /* This was also a result of copilot fixing the hobbies section. issue*/
 }
 
 #projects h2, #hobbies h2, #about h2 {
     background-color: var(--baby-blue-ice);
-    display: inline-block;
-    margin: 0px;
-    padding-left: 30px;
-    padding-right: 30px;
+    display: block;
+    text-align: center;
+    width: fit-content;
+
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: clamp(12px, 2vw, 30px);
+    padding-right: clamp(12px, 2vw, 30px);
     border-radius: 30px;
-    font-size: 35px;
+    font-size: clamp(1.5rem, 2.5vw, 2.1875rem);
 }
 
+
 #projects p, #hobbies p, #about p {
-    text-indent: 40px;
-    font-size: 20px;
+    text-indent: clamp(1rem, 3vw, 2.5rem);
+    font-size: clamp(1rem, 1.3vw, 1.875rem);
     font-family: "kinesthetia", monospace;
 
 }
 
 h3 {
     background-color: var(--dusty-mauve);
-    display: inline-block;
-    font-size: 25px;
+    display: block;
+    font-size: clamp(1.125rem, 1.8vw, 1.5625rem);
+    max-width: 100%;
+    text-align: left;
+    margin: 10px auto;
 }
 
 
 #hobbies a {
     color: black;
     font-family: "martin-gaming";
-    font-size: 40px;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
     margin-top: 25px;
     margin-bottom: 40px;
     border: 0px;
@@ -120,12 +160,17 @@ h3 {
     text-align: center;
 }
 
-#hobbies a:hover {
-    font-size: 45px;
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 #projects article {
     text-align: left;
+    min-width: 0;
+    flex: 1 1 0;
+    overflow-wrap: break-word;
 }
 
 #projects p {
@@ -134,15 +179,20 @@ h3 {
 
 .project-image {
     display: block;
-    margin-top: 0;
-    width: 250px;
+    margin: 0 auto;
+    width: min(10rem, 100%);
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    box-sizing: border-box;
     border-color: black;
-    border-width: 10px;
+    border-width: 0.5rem;
     border-style: solid;
 }
 
 .project-image:hover {
-    width: 300px;
+    width: min(20rem, 100%);
 }
 
 
@@ -164,4 +214,68 @@ address {
     font-family: "kinesthetia", monospace;
     font-size: 20px;
     font-style: italic;
+}
+
+@media (min-width: 600px)
+{
+    main {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    nav ul{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    h2 {
+        margin: 0 auto;
+    }
+    #about, #projects, #hobbies {
+        grid-row: 2;
+    }
+
+    #about {
+        grid-column: 1;
+    }
+
+    #projects {
+        grid-column: 2;
+    }
+
+    #hobbies {
+        grid-column: 3;
+    }
+
+    .projects-list {
+        flex-direction: row;
+    }
+
+    h3 {
+        margin: 2.5rem auto;
+        justify-self: center;
+    }
+
+    main {
+        border-width: 5px;
+    }
+
+}
+
+@media (min-width: 1000px){
+    #picture_of_nic {
+        width: 18vw;
+        height: auto;
+    }
+}
+
+@media (min-width: 1400px){
+    #picture_of_nic {
+        width: 20vw;
+        height: auto;
+    }
+
+    main, #picture_of_nic {
+        border-width: 0px;
+    }
+
 }
