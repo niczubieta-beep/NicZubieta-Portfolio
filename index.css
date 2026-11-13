@@ -94,7 +94,7 @@ main {
 
 }
 
-#picture_of_nic {
+.picture_of_nic {
     display:block;
     width: 50vw;
     height: 40vh;
@@ -124,7 +124,7 @@ h1 {
     overflow-wrap: break-word; /* This was also a result of copilot fixing the hobbies section. issue*/
 }
 
-#projects h2, #hobbies h2, #about h2 {
+h2 {
     background-color: var(--baby-blue-ice);
     display: block;
     text-align: center;
@@ -156,7 +156,7 @@ h3 {
 }
 
 
-#hobbies a {
+.computer-link {
     color: black;
     font-family: "martin-gaming";
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
@@ -224,13 +224,13 @@ address {
 }
 
 
-#theme-toggle {
+.theme-toggle {
     background-color: var(--msu-gown-green);
     border-radius: 50%;
     cursor: pointer;
 }
 
-#theme-toggle img {
+.theme-toggle img {
     width: 2rem;
     height: 2rem;
     object-fit: contain;
@@ -240,6 +240,29 @@ address {
     background-color: var(--gunmetal);
     color: var(--ivory);
 }
+
+.section-dark-mode {
+    background-color: var(--amethyst);
+    color: black;
+}
+
+.project-dark-mode {
+    background-color: var(--lavender);
+    color: black;
+}
+
+.computer-link-dark-mode {
+    color: white;
+}
+
+.project-image-dark-mode, .picture_of_nic-dark-mode {
+    border-color: var(--ivory);
+}
+
+.theme-toggle-dark-mode {
+    background-color: var(--ivory);
+}
+
 
 @media (min-width: 600px)
 {
@@ -287,20 +310,20 @@ address {
 }
 
 @media (min-width: 1000px){
-    #picture_of_nic {
+    .picture_of_nic {
         width: 20vw;
         height: 30vh;
     }
 }
 
 @media (min-width: 1400px){
-    #picture_of_nic {
+    .picture_of_nic {
         width: 20vw;
         height: 40vh;
         object-fit: cover;
     }
 
-    main, #picture_of_nic {
+    main, .picture_of_nic {
         border-width: 0px;
     }
 
