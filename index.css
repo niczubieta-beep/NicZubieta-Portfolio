@@ -4,6 +4,9 @@
     --gunmetal: #343E3D;
     --dusty-mauve: #93748A;
     --baby-blue-ice: #A3BCF9;
+    --ivory: #F2F5EA;
+    --lavender: #D8D8F6;
+    --amethyst: #B18FCF;
 }
 
 @font-face {
@@ -92,16 +95,20 @@ main {
 }
 
 #picture_of_nic {
-  display:block;
-  grid-column: 2;
-  grid-row: 1;
+    display:block;
+    width: 50vw;
+    height: 40vh;
+    object-fit: cover;
+    grid-column: 2;
+    grid-row: 1;
 
-  margin: 10px auto;
 
-  border-radius: 30px;
-  border-color: black;
-  border-width: 10px;
-  border-style: solid;
+    margin: 10px auto;
+
+    border-radius: 30px;
+    border-color: black;
+    border-width: 0.5vw;
+    border-style: solid;
 }
 
 h1 {
@@ -216,6 +223,24 @@ address {
     font-style: italic;
 }
 
+
+#theme-toggle {
+    background-color: var(--msu-gown-green);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#theme-toggle img {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+}
+
+.dark-mode {
+    background-color: var(--gunmetal);
+    color: var(--ivory);
+}
+
 @media (min-width: 600px)
 {
     main {
@@ -263,15 +288,16 @@ address {
 
 @media (min-width: 1000px){
     #picture_of_nic {
-        width: 18vw;
-        height: auto;
+        width: 20vw;
+        height: 30vh;
     }
 }
 
 @media (min-width: 1400px){
     #picture_of_nic {
         width: 20vw;
-        height: auto;
+        height: 40vh;
+        object-fit: cover;
     }
 
     main, #picture_of_nic {

@@ -8,13 +8,18 @@
 	<title>Nicolas Zubieta - Portfolio</title>
 
 	<link rel="icon" href="images/nz_Logo.png" type="image/png">
-
 	<link rel="stylesheet" href="index.css">
+	<script src="index.js" defer></script>
 
 </head>
 
 <body>
 	<header>
+
+		<button aria-label="Light/Dark Mode" id = "theme-toggle">
+			<img src="images/sun.svg" alt = "Light/Dark Mode" id = "theme-toggle-img">
+		</button>
+
 		<a href = "#picture_of_nic"><img src="images/picture_of_nic.JPG" alt = "Nic's Logo" id = "picture_of_nic"></a>
 		<nav>
 			<ul>
@@ -27,6 +32,7 @@
 
 	<main>
 		<h1> Nicolas Zubieta is a programmer, student network engineer, and musician from Michigan. </h1>
+
 		<section id="about">
 			<h2>About</h2>
 			<p>
@@ -63,7 +69,7 @@
 				I play guitar and drums when I'm not working/at school. I am an Eboard member of the Michigan State University Jam Club, where we host weekly sessions where students can play songs together, jam on the spot, host open mics, etc. I'm also interested in computer hardware. This past summer I built an extremely powerful PC by myself. I also have my own network stack with a managed switch and router that my PC and a small server are connected to. I use the stack to connect to my computer remotely, and also to host servers for various video games for my friends and I. Below are the specs of my current PC:
 			</p>
 
-			<a title = "Nic's PC Specs" href = "https://pcpartpicker.com/list/X8WvZQ">PC Specs</a>
+			<a title = "Nic's PC Specs" href = "https://pcpartpicker.com/list/X8WvZQ" id = "computer-link">PC Specs</a>
 		</section>
 	</main>
 
